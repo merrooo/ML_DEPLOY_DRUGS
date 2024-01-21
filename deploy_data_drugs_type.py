@@ -330,19 +330,19 @@ elif page =="- PREDICTION -":
 else:
 
   if 'sidebar_state' not in st.session_state:
-  st.session_state.sidebar_state = 'expanded'
-  st.header('SOFTWARE_DEVELOPER_AI', divider='red')
-  st.write("Concrete is the most important material in civil engineering.The concrete compressive strength is a highly nonlinear function of age andingredients. These ingredients include cement, blast furnace slag, fly ash, water, superplasticizer, coarse aggregate, and fine aggregate.So this the prediction for the strength regarding to the dependent features")
-  st.write("-- Input Variable --")
-  st.write("Age in Year")
-  st.write("Na_to_K")
-  st.write("Sex         --> Male OR Female")
-  st.write("BP          --> HIGH - LOW - NORMAL")
-  st.write("Cholesterol --> HIGH - NORMAL")
-  st.write("-- Output Variable --")
-  st.write("DRUG_TYPE   -->[ Drug_Y  , DRUG_B , DRUG_C , DRUG_A , DRUG_X]")
-  st.header('_MAY_BE_LIFE_ is :blue[cool] :sunglasses:')
-  st.write('-------------------------------CONCLUSOR---------------------------------')
+   st.session_state.sidebar_state = 'expanded'
+   st.header('SOFTWARE_DEVELOPER_AI', divider='red')
+   st.write("Concrete is the most important material in civil engineering.The concrete compressive strength is a highly nonlinear function of age andingredients. These ingredients include cement, blast furnace slag, fly ash, water, superplasticizer, coarse aggregate, and fine aggregate.So this the prediction for the strength regarding to the dependent features")
+   st.write("-- Input Variable --")
+   st.write("Age in Year")
+   st.write("Na_to_K")
+   st.write("Sex         --> Male OR Female")
+   st.write("BP          --> HIGH - LOW - NORMAL")
+   st.write("Cholesterol --> HIGH - NORMAL")
+   st.write("-- Output Variable --")
+   st.write("DRUG_TYPE   -->[ Drug_Y  , DRUG_B , DRUG_C , DRUG_A , DRUG_X]")
+   st.header('_MAY_BE_LIFE_ is :blue[cool] :sunglasses:')
+   st.write('-------------------------------CONCLUSOR---------------------------------')
   data_matrix = [['ITEM', 'DESCIBTION'],
                ['DATA_SET', 'CONCRETE_STRENGTH'],
                ['MODEL', 'XGBOOST_REGRESSION'],
