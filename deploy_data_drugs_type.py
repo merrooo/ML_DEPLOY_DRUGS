@@ -8,9 +8,6 @@ Original file is located at
 
 #DEPLOYMENT
 """
-
-!pip install streamlit==1.29.0
-
 import streamlit as st
 import streamlit as st,requests
 import pandas as pd
