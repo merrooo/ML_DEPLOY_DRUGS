@@ -7,3 +7,4 @@ xgboost==2.0.2
 missingno==0.5.2
 streamlit==1.29.0
 openpyxl==3.1.2
+imbalanced-learn==0.11.0
