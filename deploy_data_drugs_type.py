@@ -46,7 +46,7 @@ from imblearn.over_sampling import SMOTE
 st.header("DRUG_DATA_SET")
 st.image("https://media.istockphoto.com/id/692096736/photo/concrete-pouring-during-commercial-concreting-floors-of-building.jpg?s=1024x1024&w=is&k=20&c=XYYH7UhgqsMmwGBWO6UJsxaSgjxNDuQO8i7N27nwRlk=", width=200)
 def DATA_FRAME(df):
-  url_1= 'https://raw.githubusercontent.com/merrooo/ML_DATA/main/classifier/drug200.csv'
+  url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
   df=pd.read_csv(url_1)
   return df
 page=st.sidebar.selectbox("PROSSECCES_ON_DATA_SET",("- -","- EDA -","- VISUALIZATION -","- PREDICTION -"))
