@@ -261,7 +261,7 @@ elif page =="- PREDICTION -":
     y = DATA_FRAME('df')['Drug']
 
     Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
-    x_RUS, y_RUS= Ros.fit_resample(x, y)
+    x_RUS, y_RUS= Rus.fit_resample(x, y)
 
     scaler=StandardScaler()
     x_train=scaler.fit_transform(x_train)
