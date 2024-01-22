@@ -230,8 +230,8 @@ elif page =="- PREDICTION -":
   st.write('DATA_HEAD!!')
   oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
   DATA_FRAME('df')
-  df['Drug'] = oe.fit_transform(df[['Drug']])
-  df = pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
+  DATA_FRAME('df')['Drug'] = oe.fit_transform(df[['Drug']])
+  DATA_FRAME('df') = pd.get_dummies(DATA_FRAME('df'), columns=['BP', 'Cholesterol','Sex'])
   st.dataframe(DATA_FRAME('df').head(5))
   with st.form("my_form"):
 
