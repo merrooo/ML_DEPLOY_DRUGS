@@ -233,7 +233,7 @@ elif page =="- PREDICTION -":
   oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
   df['Drug'] = oe.fit_transform(df[['Drug']])
   df= pd.get_dummies(DATA_FRAME('df'), columns=['BP', 'Cholesterol','Sex'])
-  st.dataframe(DATA_FRAME('df').head(5))
+  st.dataframe(df.head(5))
   with st.form("my_form"):
 
       Age_=st.number_input("Age in Year")
