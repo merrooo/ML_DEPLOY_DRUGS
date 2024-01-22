@@ -85,7 +85,7 @@ if page == "- EDA -":
         st.dataframe(DATA_FRAME('df').columns)
         st.write('DONE!!')
     elif EDA_ == "- COLUMNS -":
-      st.write('VALUE_COUNTS_FOR_OUT_PUT[STRENGTH]!!')
+      st.write('VALUE_COUNTS_FOR_OUT_PUT[Drug]!!')
       VALUE_COUNTS_=st.sidebar.toggle('VALUE_COUNTS',disabled=False)
       UNIQUE_=st.sidebar.toggle('UNIQUE',disabled=False)
       if VALUE_COUNTS_:
@@ -247,7 +247,7 @@ elif page =="- PREDICTION -":
 
   if ok:
 
-    oe = OrdinalEncoder(categories=[['DrugY', 'DrugC', 'DrugX', 'DrugA', 'DrugB']])
+    oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
     df['Drug'] = oe.fit_transform(df[['Drug']])
 
     df = pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
@@ -347,7 +347,7 @@ else:
    st.write("BP          --> HIGH - LOW - NORMAL")
    st.write("Cholesterol --> HIGH - NORMAL")
    st.write("-- Output Variable --")
-   st.write("DRUG_TYPE   -->[ Drug_Y  , DRUG_B , DRUG_C , DRUG_A , DRUG_X]")
+   st.write("DRUG_TYPE   -->[ DRUG_Y  , DRUG_B , DRUG_C , DRUG_A , DRUG_X]")
    st.header('_MAY_BE_LIFE_ is :blue[cool] :sunglasses:')
    st.write('-------------------------------CONCLUSOR---------------------------------')
   data_matrix = [['ITEM', 'DESCIBTION'],
