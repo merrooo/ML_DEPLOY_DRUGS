@@ -247,7 +247,7 @@ elif page =="- PREDICTION -":
 
   if ok:
 
-    oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
+    oe = OrdinalEncoder(categories=[['DrugY', 'DrugC', 'DrugX', 'DrugA', 'DrugB']])
     df['Drug'] = oe.fit_transform(df[['Drug']])
 
     df = pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
