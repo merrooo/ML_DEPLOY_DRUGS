@@ -228,6 +228,9 @@ elif page =="- PREDICTION -":
   st.write("WE_NEED_SOME_INFORMATION_TO_PREDICT_THE DRUG_TYPE")
   #------------------------------------------------------------------
   st.write('DATA_HEAD!!')
+  oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
+  df['Drug'] = oe.fit_transform(df[['Drug']])
+  df = pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
   st.dataframe(DATA_FRAME('df').head(5))
   with st.form("my_form"):
 
@@ -264,11 +267,18 @@ elif page =="- PREDICTION -":
 
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.3, random_state=42)
 
-    DT_Class_mode=DecisionTreeClassifier()
-    DT_Class_mode.fit(x_train,y_train)
+    BAGGING_CLAS_mode=BaggingClassifier()
+    kf=KFold(n_splits=5,shuffle=True,random_state=0)
+    score=cross_val_score(BAGGING_CLAS_mode,x_train,y_train,cv=kf) # kfold
+    params= {'n_estimators' : [10, 100, 1000]}
+    grid_search_BAGG=GridSearchCV(
+    estimator=BAGGING_CLAS_mode,
+    param_grid=params,verbose = 1, n_jobs = -1,
+    scoring='accuracy',cv=kf)
+    grid_result=grid_search_BAGG.fit(x_train,y_train)
 
     n =np.array([[Age_, Na_to_K_, CHOICES_]])
-    DRUG_ = DT_Class_mode.predict(n)
+    DRUG_ = BAGGING_CLAS_mode.predict(n)
     st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}] MPa")
 
     new_data=pd.DataFrame(n,columns=['Age_','Na_to_K_','CHOICES'])
