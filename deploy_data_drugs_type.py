@@ -238,14 +238,15 @@ elif page =="- PREDICTION -":
 
       Age_=st.number_input("Age in Year")
       Na_to_K_=st.number_input("Na_to_K")
+      
       SEX=['Male','Female']
-      SEX_=st.selectbox('SELECT_DATA', SEX)
+      SEX_=st.selectbox('SEX', SEX)
       
       B_P=['HIGHT','LOW','NORMAL']
-      B_P_=st.selectbox('SELECT_DATA', B_P)
+      B_P_=st.selectbox('BP', B_P)
       
       CHOLESTROL=['HIGH','NORMAL']
-      CHOLESTROL_=st.selectbox('SELECT_DATA', CHOLESTROL)
+      CHOLESTROL_=st.selectbox('CHOLESTROL', CHOLESTROL)
       
       submitted = st.form_submit_button("SUBMIT")
   ok=st.button("PREDICTION_DRUGS_TYPE")
@@ -279,11 +280,11 @@ elif page =="- PREDICTION -":
     scoring='accuracy',cv=kf)
     grid_result=grid_search_BAGG.fit(x_train,y_train)
 
-    n =np.array([[Age_, Na_to_K_, CHOICES_]])
+    n =np.array([[Age_, Na_to_K_, B_P_,CHOLESTROL_]])
     DRUG_ = BAGGING_CLAS_mode.predict(n)
     st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}] MPa")
 
-    new_data=pd.DataFrame(n,columns=['Age_','Na_to_K_','CHOICES'])
+    new_data=pd.DataFrame(n,columns=['Age_','Na_to_K_','CHOLESTROL_'])
     new_data['DRUG_'] = DRUG_
 
     st.subheader('PREDICTION_SAMPLE')
