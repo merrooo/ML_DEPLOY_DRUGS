@@ -8,7 +8,6 @@ Original file is located at
 
 #DEPLOYMENT
 """
-# !pip install streamlit==1.29.0
 import streamlit as st
 import streamlit as st,requests
 import pandas as pd
@@ -234,8 +233,15 @@ elif page =="- PREDICTION -":
 
       Age_=st.number_input("Age in Year")
       Na_to_K_=st.number_input("Na_to_K")
-      CHOICES=['Sex','BP','Cholesterol']
-      CHOICES_=st.selectbox('SELECT_DATA', CHOICES)
+      SEX=['Male','Female']
+      SEX_=st.selectbox('SELECT_DATA', SEX)
+      
+      B_P=['HIGHT','LOW','NORMAL']
+      B_P_=st.selectbox('SELECT_DATA', B_P)
+      
+      CHOLESTROL=['HIGH','NORMAL']
+      CHOLESTROL_=st.selectbox('SELECT_DATA', CHOLESTROL)
+      
       submitted = st.form_submit_button("SUBMIT")
   ok=st.button("PREDICTION_DRUGS_TYPE")
 
