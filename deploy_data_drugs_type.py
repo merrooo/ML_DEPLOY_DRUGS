@@ -228,10 +228,8 @@ elif page =="- PREDICTION -":
   st.write("WE_NEED_SOME_INFORMATION_TO_PREDICT_THE DRUG_TYPE")
   #------------------------------------------------------------------
   st.write('DATA_HEAD!!')
-  def DATA_FRAME(df):
-   url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
-   df=pd.read_csv(url_1)
-   return df
+  url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
+  df=pd.read_csv(url_1)
   oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
   df['Drug'] = oe.fit_transform(df[['Drug']])
   df= pd.get_dummies(DATA_FRAME('df'), columns=['BP', 'Cholesterol','Sex'])
