@@ -260,8 +260,8 @@ elif page =="- PREDICTION -":
     x = DATA_FRAME('df').loc[:, DATA_FRAME('df').columns != 'Drug']
     y = DATA_FRAME('df')['Drug']
 
-    Ros = RandomOverSampler(sampling_strategy = {0:91, 1:91, 2:91 , 3:91, 4:91},random_state=42)
-    x_ROS, y_ROS= Ros.fit_resample(x, y)
+    Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
+    x_RUS, y_RUS= Ros.fit_resample(x, y)
 
     scaler=StandardScaler()
     x_train=scaler.fit_transform(x_train)
