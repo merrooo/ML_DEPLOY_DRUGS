@@ -229,6 +229,7 @@ elif page =="- PREDICTION -":
   #------------------------------------------------------------------
   st.write('DATA_HEAD!!')
   oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
+  DATA_FRAME('df')
   df['Drug'] = oe.fit_transform(df[['Drug']])
   df = pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
   st.dataframe(DATA_FRAME('df').head(5))
