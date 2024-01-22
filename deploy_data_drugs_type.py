@@ -103,125 +103,125 @@ if page == "- EDA -":
     st.balloons()
 #_______________________________________________________________________________________________________________________________________________________________
 
-# elif page =="- VISUALIZATION -":
-#    #------------------------------------------------------------------
-#     st.sidebar.write('AREA_CHART!!')
-#     button_VISU_2=st.sidebar.button("AREA_CHART",type="primary")
-#     st.sidebar.write('DISTRIBUTION_PLOTTING!!')
-#     if button_VISU_2:
-#      st.write("AREA_CHART_DEPENDENT FEATURES (CEMENT_AGE_SUPERPLASTICIZER) AFFECTING ON STRENGTH")
-#      st.area_chart(
-#      DATA_FRAME('df'), x="Strength", y=["Cement", "Superplasticizer","Age"], color=["#f0e936", "#4633f2","#0e6210"]) # Optional
-#      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+elif page =="- VISUALIZATION -":
+   #------------------------------------------------------------------
+    st.sidebar.write('AREA_CHART!!')
+    button_VISU_2=st.sidebar.button("AREA_CHART",type="primary")
+    st.sidebar.write('DISTRIBUTION_PLOTTING!!')
+    if button_VISU_2:
+     st.write("AREA_CHART_DEPENDENT FEATURES (CEMENT_AGE_SUPERPLASTICIZER) AFFECTING ON STRENGTH")
+     st.area_chart(
+     DATA_FRAME('df'), x="Strength", y=["Cement", "Superplasticizer","Age"], color=["#f0e936", "#4633f2","#0e6210"]) # Optional
+     st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_3=st.sidebar.button("DISTRUBTION_PLOT_1",type="primary")
-#     if button_VISU_3:
-#       st.write("DISTRIBUTION_PLOTTING THE DEPENDENT FEATURES (CEMENT_AGE_SUPERPLASTICIZER) AFFECTING ON STRENGTH")
-#       x1 = np.random.randn(200) - 2
-#       x2 = np.random.randn(200)
-#       x3 = np.random.randn(200) + 2
-#       hist_data = [x1, x2, x3]
-#       group_labels = ['Cement', 'Age', 'Superplasticizer']
-#       fig = ff.create_distplot(
-#         hist_data, group_labels, bin_size=[.1, .25, .5])
-#       st.plotly_chart(fig, use_container_width=True)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_3=st.sidebar.button("DISTRUBTION_PLOT_1",type="primary")
+    if button_VISU_3:
+      st.write("DISTRIBUTION_PLOTTING THE DEPENDENT FEATURES (CEMENT_AGE_SUPERPLASTICIZER) AFFECTING ON STRENGTH")
+      x1 = np.random.randn(200) - 2
+      x2 = np.random.randn(200)
+      x3 = np.random.randn(200) + 2
+      hist_data = [x1, x2, x3]
+      group_labels = ['Cement', 'Age', 'Superplasticizer']
+      fig = ff.create_distplot(
+        hist_data, group_labels, bin_size=[.1, .25, .5])
+      st.plotly_chart(fig, use_container_width=True)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_4=st.sidebar.button("DISTRUBTION_PLOT_2",type="primary")
-#     if button_VISU_4:
-#       st.write("DISTRIBUTION_PLOTTING CEMENT REGARDING TO STRENGTH ")
-#       x1 = np.random.randn(1000) - 2
-#       x2 = np.random.randn(1000)
-#       x3 = np.random.randn(1000) + 2
-#       hist_data = [x3]
-#       group_labels = ['Strength']
-#       fig = ff.create_distplot(
-#           hist_data, group_labels, bin_size=[.1, .25, .5])
-#       st.plotly_chart(fig, use_container_width=True)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_4=st.sidebar.button("DISTRUBTION_PLOT_2",type="primary")
+    if button_VISU_4:
+      st.write("DISTRIBUTION_PLOTTING CEMENT REGARDING TO STRENGTH ")
+      x1 = np.random.randn(1000) - 2
+      x2 = np.random.randn(1000)
+      x3 = np.random.randn(1000) + 2
+      hist_data = [x3]
+      group_labels = ['Strength']
+      fig = ff.create_distplot(
+          hist_data, group_labels, bin_size=[.1, .25, .5])
+      st.plotly_chart(fig, use_container_width=True)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_5=st.sidebar.button("DISTRUBTION_PLOT_3",type="primary")
-#     if button_VISU_5:
-#      st.write("DISTRIBUTION_PLOTTING CEMENT REGARDING TO STRENGTH ")
-#      x1 = np.random.randn(1000) - 2
-#      x2 = np.random.randn(1000)
-#      x3 = np.random.randn(1000) + 2
-#      hist_data = [x3]
-#      group_labels = ['Cement']
-#      fig = ff.create_distplot(
-#           hist_data, group_labels, bin_size=[.1, .25, .5])
-#      st.plotly_chart(fig, use_container_width=True)
-#      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_5=st.sidebar.button("DISTRUBTION_PLOT_3",type="primary")
+    if button_VISU_5:
+     st.write("DISTRIBUTION_PLOTTING CEMENT REGARDING TO STRENGTH ")
+     x1 = np.random.randn(1000) - 2
+     x2 = np.random.randn(1000)
+     x3 = np.random.randn(1000) + 2
+     hist_data = [x3]
+     group_labels = ['Cement']
+     fig = ff.create_distplot(
+          hist_data, group_labels, bin_size=[.1, .25, .5])
+     st.plotly_chart(fig, use_container_width=True)
+     st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_6=st.sidebar.button("DISTRUBTION_PLOT_4",type="primary")
-#     if button_VISU_6:
-#       st.write("DISTRIBUTION_PLOTTING CEMENT REGARDING TO STRENGTH ")
-#       x1 = np.random.randn(1000) - 2
-#       x2 = np.random.randn(1000)
-#       x3 = np.random.randn(1000) + 2
-#       hist_data = [x3]
-#       group_labels = ['Age']
-#       fig = ff.create_distplot(
-#          hist_data, group_labels, bin_size=[.1, .25, .5])
-#       st.plotly_chart(fig, use_container_width=True)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_6=st.sidebar.button("DISTRUBTION_PLOT_4",type="primary")
+    if button_VISU_6:
+      st.write("DISTRIBUTION_PLOTTING CEMENT REGARDING TO STRENGTH ")
+      x1 = np.random.randn(1000) - 2
+      x2 = np.random.randn(1000)
+      x3 = np.random.randn(1000) + 2
+      hist_data = [x3]
+      group_labels = ['Age']
+      fig = ff.create_distplot(
+         hist_data, group_labels, bin_size=[.1, .25, .5])
+      st.plotly_chart(fig, use_container_width=True)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_7=st.sidebar.button("DISTRUBTION_PLOT_5",type="primary")
-#     st.sidebar.write('HEAT_MAP!!')
-#     if button_VISU_7:
-#       st.write("DISTRIBUTION_PLOTTING CEMENT REGARDING TO STRENGTH ")
-#       x1 = np.random.randn(1000) - 2
-#       x2 = np.random.randn(1000)
-#       x3 = np.random.randn(1000) + 2
-#       hist_data = [x3]
-#       group_labels = ['Superplasticizer']
-#       fig = ff.create_distplot(
-#           hist_data, group_labels, bin_size=[.1, .25, .5])
-#       st.plotly_chart(fig, use_container_width=True)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_7=st.sidebar.button("DISTRUBTION_PLOT_5",type="primary")
+    st.sidebar.write('HEAT_MAP!!')
+    if button_VISU_7:
+      st.write("DISTRIBUTION_PLOTTING CEMENT REGARDING TO STRENGTH ")
+      x1 = np.random.randn(1000) - 2
+      x2 = np.random.randn(1000)
+      x3 = np.random.randn(1000) + 2
+      hist_data = [x3]
+      group_labels = ['Superplasticizer']
+      fig = ff.create_distplot(
+          hist_data, group_labels, bin_size=[.1, .25, .5])
+      st.plotly_chart(fig, use_container_width=True)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_8=st.sidebar.button("HEAT_MAP_DF",type="primary")
-#     if button_VISU_8:
-#       st.write("HEAT_MAP(DATA_FRAME)")
-#       fig = px.imshow(DATA_FRAME('df'), text_auto=True, aspect="auto")
-#       st.plotly_chart(fig)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_8=st.sidebar.button("HEAT_MAP_DF",type="primary")
+    if button_VISU_8:
+      st.write("HEAT_MAP(DATA_FRAME)")
+      fig = px.imshow(DATA_FRAME('df'), text_auto=True, aspect="auto")
+      st.plotly_chart(fig)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_9=st.sidebar.button("HEAT_MAP_CEMENT",type="primary")
-#     if button_VISU_9:
-#       st.write("HEAT_MAP(CEMENT_STRENGTH)")
-#       fig = px.density_heatmap(DATA_FRAME('df'), x="Cement", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
-#       st.plotly_chart(fig)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_9=st.sidebar.button("HEAT_MAP_CEMENT",type="primary")
+    if button_VISU_9:
+      st.write("HEAT_MAP(CEMENT_STRENGTH)")
+      fig = px.density_heatmap(DATA_FRAME('df'), x="Cement", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
+      st.plotly_chart(fig)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_10=st.sidebar.button("HEAT_MAP_AGE",type="primary")
-#     if button_VISU_10:
-#       st.write("HEAT_MAP(AGE_STRENGTH)")
-#       fig = px.density_heatmap(DATA_FRAME('df'), x="Age", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
-#       st.plotly_chart(fig)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_10=st.sidebar.button("HEAT_MAP_AGE",type="primary")
+    if button_VISU_10:
+      st.write("HEAT_MAP(AGE_STRENGTH)")
+      fig = px.density_heatmap(DATA_FRAME('df'), x="Age", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
+      st.plotly_chart(fig)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_11=st.sidebar.button("HEAT_MAP_Superplasticizer",type="primary")
-#     if button_VISU_11:
-#       st.write("HEAT_MAP(Superplasticizer_STRENGTH)")
-#       fig = px.density_heatmap(DATA_FRAME('df'), x="Superplasticizer", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
-#       st.plotly_chart(fig)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_11=st.sidebar.button("HEAT_MAP_Superplasticizer",type="primary")
+    if button_VISU_11:
+      st.write("HEAT_MAP(Superplasticizer_STRENGTH)")
+      fig = px.density_heatmap(DATA_FRAME('df'), x="Superplasticizer", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
+      st.plotly_chart(fig)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_12=st.sidebar.button("HEAT_MAP_Fly Ash_STRENGTH",type="primary")
-#     if button_VISU_12:
-#       st.write("HEAT_MAP(Fly Ash_STRENGTH)")
-#       fig = px.density_heatmap(DATA_FRAME('df'), x="Fly Ash", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
-#       st.plotly_chart(fig)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    button_VISU_12=st.sidebar.button("HEAT_MAP_Fly Ash_STRENGTH",type="primary")
+    if button_VISU_12:
+      st.write("HEAT_MAP(Fly Ash_STRENGTH)")
+      fig = px.density_heatmap(DATA_FRAME('df'), x="Fly Ash", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
+      st.plotly_chart(fig)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
 
-#     button_VISU_13=st.sidebar.button("HEAT_MAP_Water",type="primary")
-#     if button_VISU_13:
-#       st.write("HEAT_MAP(Superplasticizer_STRENGTH)")
-#       fig = px.density_heatmap(DATA_FRAME('df'), x="Water", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
-#       st.plotly_chart(fig)
-#       st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
-#     st.balloons()
+    button_VISU_13=st.sidebar.button("HEAT_MAP_Water",type="primary")
+    if button_VISU_13:
+      st.write("HEAT_MAP(Superplasticizer_STRENGTH)")
+      fig = px.density_heatmap(DATA_FRAME('df'), x="Water", y="Strength", text_auto=True, nbinsx=7, color_continuous_scale='turbid_r', width=686, height=889)
+      st.plotly_chart(fig)
+      st.success('ALREADY_GRAPH_VISUALIZED!', icon="✅")
+    st.balloons()
 #_______________________________________________________________________________________________________________________________________________________________
 
 elif page =="- PREDICTION -":
