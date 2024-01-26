@@ -294,9 +294,9 @@ elif page =="- PREDICTION -":
     my_bar.empty()
     # st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     st.subheader('PREDICTION_SAMPLE')
-    if DRUG_[0]==0:
+    if DRUG_==0:
        st.subheader("DrugY")
-    elif DRUG_[0]==1:
+    elif DRUG_==1:
         st.subheader("drugC")
     elif DRUG_[0]==2:
         st.subheader("drugX")
