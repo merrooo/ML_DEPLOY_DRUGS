@@ -232,20 +232,18 @@ elif page =="- PREDICTION -":
   st.write("WE_NEED_SOME_INFORMATION_TO_PREDICT_THE DRUG_TYPE")
   #------------------------------------------------------------------
   st.write('DATA_HEAD!!')
-  url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
-  df=pd.read_csv(url_1)
-    # Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
-    # x_RUS, y_RUS= Rus.fit_resample(x, y)
+  # Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
+  # x_RUS, y_RUS= Rus.fit_resample(x, y)
+  st.dataframe(DATA_FRAME('df').head(5))
   oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])   
-  df['Drug'] = oe.fit_transform(df[['Drug']])
+  DATA_FRAME('df')['Drug'] = oe.fit_transform(DATA_FRAME('df')[['Drug']])
   # df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
   oe = OrdinalEncoder(categories=[['NORMAL', 'HIGH']])
-  df['Cholesterol'] = oe.fit_transform(df[['Cholesterol']])
+  DATA_FRAME('df')['Cholesterol'] = oe.fit_transform(DATA_FRAME('df')[['Cholesterol']])
   oe = OrdinalEncoder(categories=[['F', 'M']])
-  df['Sex'] = oe.fit_transform(df[['Sex']])
+  DATA_FRAME('df')['Sex'] = oe.fit_transform(DATA_FRAME('df')[['Sex']])
   oe = OrdinalEncoder(categories=[['LOW', 'NORMAL','HIGH']])
-  df['BP'] = oe.fit_transform(df[['BP']])
-  st.dataframe(DATA_FRAME('df').head(5))
+  DATA_FRAME('df')['BP'] = oe.fit_transform(DATA_FRAME('df')[['BP']])
   Age_=st.number_input("Age")
   Sex_=st.selectbox("Sex",('FEMALE','MALE'))
   BP_=st.selectbox("BP",('HIGH','NORMAL','LOW'))
@@ -267,8 +265,8 @@ elif page =="- PREDICTION -":
       Sex_=1
   ok=st.button("PREDICTION_DRUGS_TYPE")
   if ok:
-    x = df.loc[:, df.columns != 'Drug']
-    y = df['Drug']
+    x = DATA_FRAME('df').loc[:, DATA_FRAME('df').columns != 'Drug']
+    y = DATA_FRAME('df')['Drug']
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.3, random_state=42)
     scaler=StandardScaler()
     x_train=scaler.fit_transform(x_train)
@@ -283,9 +281,9 @@ elif page =="- PREDICTION -":
         scoring='accuracy',cv=kf)
     grid_result=grid_search_BAGG.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
-    new_data=pd.DataFrame(n,columns=['CHOLESTROL_','Sex_','Na_to_K_','Age_','BP_'])
+    # new_data=pd.DataFrame(n,columns=['CHOLESTROL_','Sex_','Na_to_K_','Age_','BP_'])
     DRUG_=grid_search_BAGG.predict(n)
-    new_data['DRUG_'] = DRUG_
+    # new_data['DRUG_'] = DRUG_
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
 
@@ -294,7 +292,6 @@ elif page =="- PREDICTION -":
         my_bar.progress(percent_complete + 1, text=progress_text)
     time.sleep(1)
     my_bar.empty()
-    # st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     st.subheader('PREDICTION_SAMPLE')
     if DRUG_[0]==0:
        st.subheader("DrugY")
