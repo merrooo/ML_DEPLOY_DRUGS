@@ -297,7 +297,7 @@ elif page =="- PREDICTION -":
     st.subheader('PREDICTION_SAMPLE')
     #--------------------------------------------------------------------------
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
-    DRUG_TRAIN=grid_search_BAGG.predict(x_train)
+    DRUG_TRAIN=BAGGING_CLAS_mode.predict(x_train)
     ACCURACY_TRAIN=accuracy_score(y_train,DRUG_TRAIN)*100
     st.subheader(" ACCURACY_TRAIN_FOR_MODEL_IS :- \n[{:.2f}] %".format(ACCURACY_TRAIN))
     st.write('------------------------------ACCURACY_TEST------------------------------')
