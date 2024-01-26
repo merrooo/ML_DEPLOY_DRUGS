@@ -272,11 +272,11 @@ elif page =="- PREDICTION -":
 
     #--------------------------------------------------------------------------
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
-    DRUG_TRAIN=XGB_REG_model.predict(x_train)
+    DRUG_TRAIN=grid_search_BAGG.predict(x_train)
     SCORE_TRAIN=r2_score(y_train,DRUG_TRAIN)*100
     st.subheader(" ACCURACY_TRAIN_FOR_MODEL_IS :- \n[{:.2f}] %".format(SCORE_TRAIN))
     st.write('------------------------------ACCURACY_TEST------------------------------')
-    DRUG_TEST=XGB_REG_model.predict(x_test)
+    DRUG_TEST=grid_search_BAGG.predict(x_test)
     SCORE_TEST=r2_score(y_test,DRUG_TEST)*100
     st.subheader(" ACCURACY_TEST_FOR_MODEL_IS :- \n[{:.2f}] %".format(SCORE_TEST))
     st.write('-----------------------------ACCURACCY_GRAPH----------------------------')
@@ -335,7 +335,7 @@ else:
    st.write('-------------------------------CONCLUSOR---------------------------------')
   data_matrix = [['ITEM', 'DESCIBTION'],
                ['DATA_SET', 'CONCRETE_STRENGTH'],
-               ['MODEL', 'XGBOOST_REGRESSION'],
+               ['MODEL', 'BAGGING_CLASSIFIER'],
                ['SCORE_TRAIN-%', 99.58],
                ['SCORE_TEST-%', 91.04]]
   fig = ff.create_table(data_matrix)
