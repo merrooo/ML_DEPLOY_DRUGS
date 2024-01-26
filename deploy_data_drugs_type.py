@@ -284,7 +284,7 @@ elif page =="- PREDICTION -":
     grid_result=grid_search_BAGG.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
     DRUG_=grid_search_BAGG.predict(n)
-    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_:.2f}]") # Displays the predicted drug type in Streamlit
+    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
 
