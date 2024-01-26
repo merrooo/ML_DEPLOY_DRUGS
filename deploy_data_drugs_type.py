@@ -258,9 +258,6 @@ elif page =="- PREDICTION -":
     grid_result=grid_search_BAGG.fit(x_train,y_train)
 
     DRUG_ = grid_search_BAGG.predict(x_test) # Uses the model to predict the drug type
-    # ok=st.button("PREDICTION_DRUGS_TYPE")
-    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
-    st.subheader('PREDICTION_SAMPLE')
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
 
@@ -269,16 +266,17 @@ elif page =="- PREDICTION -":
         my_bar.progress(percent_complete + 1, text=progress_text)
     time.sleep(1)
     my_bar.empty()
-
+    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
+    st.subheader('PREDICTION_SAMPLE')
     #--------------------------------------------------------------------------
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
     DRUG_TRAIN=grid_search_BAGG.predict(x_train)
-    SCORE_TRAIN=r2_score(y_train,DRUG_TRAIN)*100
-    st.subheader(" ACCURACY_TRAIN_FOR_MODEL_IS :- \n[{:.2f}] %".format(SCORE_TRAIN))
+    ACCURACY_TRAIN=accuracy_score(y_train,DRUG_TRAIN)*100
+    st.subheader(" ACCURACY_TRAIN_FOR_MODEL_IS :- \n[{:.2f}] %".format(ACCURACY_TRAIN))
     st.write('------------------------------ACCURACY_TEST------------------------------')
     DRUG_TEST=grid_search_BAGG.predict(x_test)
-    SCORE_TEST=r2_score(y_test,DRUG_TEST)*100
-    st.subheader(" ACCURACY_TEST_FOR_MODEL_IS :- \n[{:.2f}] %".format(SCORE_TEST))
+    ACCURACY_TEST=accuracy_score(y_test,DRUG_TEST)*100
+    st.subheader(" ACCURACY_TEST_FOR_MODEL_IS :- \n[{:.2f}] %".format(ACCURACY_TEST))
     st.write('-----------------------------ACCURACCY_GRAPH----------------------------')
     labels = 'ACCURACY_TEST', 'ACCURACY_TRAIN'
     sizes = [48.6, 51.4]
