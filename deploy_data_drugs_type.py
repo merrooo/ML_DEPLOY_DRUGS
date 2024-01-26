@@ -271,7 +271,6 @@ elif page =="- PREDICTION -":
     my_bar.empty()
 
     #--------------------------------------------------------------------------
-    new_data['DRUG_'] = DRUG_
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
     DRUG_TRAIN=XGB_REG_model.predict(x_train)
     SCORE_TRAIN=r2_score(y_train,DRUG_TRAIN)*100
