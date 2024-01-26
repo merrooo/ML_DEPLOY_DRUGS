@@ -229,18 +229,17 @@ elif page =="- VISUALIZATION -":
 #_______________________________________________________________________________________________________________________________________________________________
 
 elif page =="- PREDICTION -":
-    st.write("WE_NEED_SOME_INFORMATION_TO_PREDICT_THE DRUG_TYPE")
+  st.write("WE_NEED_SOME_INFORMATION_TO_PREDICT_THE DRUG_TYPE")
   #------------------------------------------------------------------
-    st.write('DATA_HEAD!!')
-    url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
-    df=pd.read_csv(url_1)
+  st.write('DATA_HEAD!!')
+  url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
+  df=pd.read_csv(url_1)
     # Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
     # x_RUS, y_RUS= Rus.fit_resample(x, y)
-    oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
-    df['Drug'] = oe.fit_transform(df[['Drug']])
-    df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
-    st.dataframe(df.head(5))
-    ok=st.button("PREDICTION_DRUGS_TYPE")
+  oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])   df['Drug'] = oe.fit_transform(df[['Drug']])
+  df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
+  st.dataframe(df.head(5))
+  ok=st.button("PREDICTION_DRUGS_TYPE")
   if ok:
     x = df.loc[:, df.columns != 'Drug']
     y = df['Drug']
