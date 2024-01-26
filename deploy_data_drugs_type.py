@@ -264,7 +264,7 @@ elif page =="- PREDICTION -":
     Sex_=st.selectbox(" FEMALE","MALE")
     if BP_=="HIGH":
       BP_=1
-    elif BP_=="NORMAL"::
+    elif BP_=="NORMAL":
       BP_=1
     else:
       BP_=1
