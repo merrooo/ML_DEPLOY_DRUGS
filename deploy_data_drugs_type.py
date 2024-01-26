@@ -234,17 +234,8 @@ elif page =="- PREDICTION -":
     df['Drug'] = oe.fit_transform(df[['Drug']])
     df= pd.get_dummies(DATA_FRAME('df'), columns=['BP', 'Cholesterol','Sex'])
     st.dataframe(df.head(5))
-    # ok=st.button("PREDICTION_DRUGS_TYPE")
-
-  # if ok:
-
-    # oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
-    # df['Drug'] = oe.fit_transform(df[['Drug']])
-
-    # df = pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
-
-    x = DATA_FRAME('df').loc[:, DATA_FRAME('df').columns != 'Drug']
-    y = DATA_FRAME('df')['Drug']
+    x = df.loc[:, df.columns != 'Drug']
+    y = df['Drug']
 
     Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
     x_RUS, y_RUS= Rus.fit_resample(x, y)
@@ -268,13 +259,7 @@ elif page =="- PREDICTION -":
     DRUG_ = grid_search_BAGG.predict(x_test) # Uses the model to predict the drug type
     ok=st.button("PREDICTION_DRUGS_TYPE")
     st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
-    
-    new_data=pd.DataFrame(n,columns=['Age_','Na_to_K_','CHOLESTROL_'])
-    new_data['DRUG_'] = DRUG_
-
     st.subheader('PREDICTION_SAMPLE')
-    st.dataframe(new_data)
-
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
 
