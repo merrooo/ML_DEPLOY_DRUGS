@@ -230,16 +230,14 @@ elif page =="- PREDICTION -":
     st.write('DATA_HEAD!!')
     url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
     df=pd.read_csv(url_1)
+    Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
+    x_RUS, y_RUS= Rus.fit_resample(x, y)
     oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
     df['Drug'] = oe.fit_transform(df[['Drug']])
     df= pd.get_dummies(DATA_FRAME('df'), columns=['BP', 'Cholesterol','Sex'])
     st.dataframe(df.head(5))
     x = df.loc[:, df.columns != 'Drug']
     y = df['Drug']
-
-    Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
-    x_RUS, y_RUS= Rus.fit_resample(x, y)
-
     scaler=StandardScaler()
     x_train=scaler.fit_transform(x_train)
     x_test=scaler.transform(x_test)
