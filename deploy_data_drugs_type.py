@@ -265,7 +265,7 @@ elif page =="- PREDICTION -":
     scoring='accuracy',cv=kf)
     grid_result=grid_search_BAGG.fit(x_train,y_train)
 
-    DRUG_ = BAGGING_CLAS_mode.predict(x) # Uses the model to predict the drug type
+    DRUG_ = BAGGING_CLAS_mode.predict(x_test) # Uses the model to predict the drug type
     st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
 
     new_data=pd.DataFrame(n,columns=['Age_','Na_to_K_','CHOLESTROL_'])
