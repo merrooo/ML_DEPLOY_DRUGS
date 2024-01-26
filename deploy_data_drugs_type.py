@@ -239,12 +239,10 @@ elif page =="- PREDICTION -":
     ok=st.button("PREDICTION_DRUGS_TYPE")
     x = df.loc[:, df.columns != 'Drug']
     y = df['Drug']
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.3, random_state=42)
     scaler=StandardScaler()
     x_train=scaler.fit_transform(x_train)
     x_test=scaler.transform(x_test)
-
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.3, random_state=42)
-
     BAGGING_CLAS_mode=BaggingClassifier()
     kf=KFold(n_splits=5,shuffle=True,random_state=0)
     score=cross_val_score(BAGGING_CLAS_mode,x_train,y_train,cv=kf) # kfold
