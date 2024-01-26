@@ -40,6 +40,10 @@ from collections import Counter
 from imblearn.under_sampling import RandomUnderSampler
 from imblearn.over_sampling import SMOTE
 
+from sklearn.ensemble import BaggingClassifier
+
+
+
 st.header("DRUG_DATA_SET")
 st.image("https://media.istockphoto.com/id/692096736/photo/concrete-pouring-during-commercial-concreting-floors-of-building.jpg?s=1024x1024&w=is&k=20&c=XYYH7UhgqsMmwGBWO6UJsxaSgjxNDuQO8i7N27nwRlk=", width=200)
 def DATA_FRAME(df):
