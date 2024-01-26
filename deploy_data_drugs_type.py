@@ -245,7 +245,7 @@ elif page =="- PREDICTION -":
   df['Sex'] = oe.fit_transform(df[['Sex']])
   oe = OrdinalEncoder(categories=[['LOW', 'NORMAL','HIGH']])
   df['BP'] = oe.fit_transform(df[['BP']])
-  st.dataframe(df.head(5))
+  st.dataframe(DATA_FRAME('df').head(5))
   Na_to_K_=st.number_input("Na_to_K")
   Age_=st.number_input("Age")
   BP_=st.selectbox("BP",('HIGH','NORMAL','LOW'))
