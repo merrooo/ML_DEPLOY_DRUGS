@@ -280,9 +280,9 @@ elif page =="- PREDICTION -":
     scoring='accuracy',cv=kf)
     grid_result=grid_search_BAGG.fit(x_train,y_train)
 
-    n =np.array([[Age_, Na_to_K_, B_P_,CHOLESTROL_]])
-    DRUG_ = BAGGING_CLAS_mode.predict(n)
-    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}] MPa")
+    n =np.array([[Age_, Na_to_K_, B_P_,CHOLESTROL_]]) # Creates a NumPy array with your features
+    DRUG_ = BAGGING_CLAS_mode.predict(n) # Uses the model to predict the drug type
+    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}] MPa") # Displays the predicted drug type in Streamlit
 
     new_data=pd.DataFrame(n,columns=['Age_','Na_to_K_','CHOLESTROL_'])
     new_data['DRUG_'] = DRUG_
