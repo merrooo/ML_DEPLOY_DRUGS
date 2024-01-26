@@ -257,8 +257,28 @@ elif page =="- PREDICTION -":
         param_grid=params,verbose = 1, n_jobs = -1,
         scoring='accuracy',cv=kf)
     grid_result=grid_search_BAGG.fit(x_train,y_train)
-
-    DRUG_ = grid_search_BAGG.predict(x[1]) # Uses the model to predict the drug type
+    Na_to_K_=st.number_input("Na_to_K")
+    Age_=st.number_input("Age")
+    BP_=st.selectbox("HIGH","NORMAL","LOW")
+    CHOLESTROL_=st.selectbox(" HIGH","NORMAL")
+    Sex_=st.selectbox(" FEMALE","MALE")
+    if BP_=="HIGH":
+      BP_=1
+    elif BP_=="NORMAL"::
+      BP_=1
+    else:
+      BP_=1
+    if CHOLESTROL_=="HIGH":
+      CHOLESTROL_=1
+    else:
+      CHOLESTROL_=1
+    if Sex_=="FEMALE":
+      Sex_=1
+    else:
+      Sex_=1
+    n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
+    DRUG_=grid_search_BAGG.predict(n)
+    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
 
