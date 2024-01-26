@@ -258,7 +258,7 @@ elif page =="- PREDICTION -":
         scoring='accuracy',cv=kf)
     grid_result=grid_search_BAGG.fit(x_train,y_train)
 
-    DRUG_ = grid_search_BAGG.predict(x) # Uses the model to predict the drug type
+    DRUG_ = grid_search_BAGG.predict(x[1]) # Uses the model to predict the drug type
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
 
