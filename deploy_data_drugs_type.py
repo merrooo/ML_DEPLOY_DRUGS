@@ -239,14 +239,16 @@ elif page =="- PREDICTION -":
       Age_=st.number_input("Age in Year")
       Na_to_K_=st.number_input("Na_to_K")
       
-      SEX=['Male','Female']
-      SEX_=st.selectbox('SEX', SEX)
-      
-      B_P=['HIGHT','LOW','NORMAL']
-      B_P_=st.selectbox('BP', B_P)
-      
-      CHOLESTROL=['HIGH','NORMAL']
-      CHOLESTROL_=st.selectbox('CHOLESTROL', CHOLESTROL)
+      BP_HIGH_=np.array(BP_HIGH)
+      BP_HIGH_=st.selectbox("HIGH",BP_HIGH)
+      BP_NORMAL_=np.array(BP_NORMAL)
+      BP_NORMAL_=st.selectbox("NORMAL",BP_NORMAL)
+      BP_LOW_=np.array(BP_LOW)
+      BP_LOW_=st.selectbox("LOW",BP_LOW)
+      Cholesterol_HIGH_=np.array(Cholesterol_HIGH)
+      Cholesterol_HIGH_=st.selectbox("HIGHT",Cholesterol_HIGH)
+      Cholesterol_NORMAL_=np.array(Cholesterol_NORMAL)
+      Cholesterol_NORMAL=st.selectbox("NORMAL",Cholesterol_NORMAL)
       
       submitted = st.form_submit_button("SUBMIT")
   ok=st.button("PREDICTION_DRUGS_TYPE")
