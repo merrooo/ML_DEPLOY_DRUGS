@@ -281,10 +281,9 @@ elif page =="- PREDICTION -":
         estimator=BAGGING_CLAS_mode,
         param_grid=params,verbose = 1, n_jobs = -1,
         scoring='accuracy',cv=kf)
-    grid_result=BAGGING_CLAS_mode.fit(x_train,y_train)
+    grid_result=grid_search_BAGG.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
-    DRUG_=BAGGING_CLAS_mode.predict(n)
-    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
+    DRUG_=grid_search_BAGG.predict(n)
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
 
@@ -295,9 +294,10 @@ elif page =="- PREDICTION -":
     my_bar.empty()
     # st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     st.subheader('PREDICTION_SAMPLE')
+    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     #--------------------------------------------------------------------------
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
-    DRUG_TRAIN=BAGGING_CLAS_mode.predict(x_train)
+    DRUG_TRAIN=grid_search_BAGG.predict(x_train)
     ACCURACY_TRAIN=accuracy_score(y_train,DRUG_TRAIN)*100
     st.subheader(" ACCURACY_TRAIN_FOR_MODEL_IS :- \n[{:.2f}] %".format(ACCURACY_TRAIN))
     st.write('------------------------------ACCURACY_TEST------------------------------')
