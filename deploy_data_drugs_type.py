@@ -250,7 +250,7 @@ elif page =="- PREDICTION -":
       Cholesterol_NORMAL_=np.array(Cholesterol_NORMAL)
       Cholesterol_NORMAL=st.selectbox("NORMAL",Cholesterol_NORMAL)
       
-      submitted = st.form_submit_button("SUBMIT")
+      # submitted = st.form_submit_button("SUBMIT")
   ok=st.button("PREDICTION_DRUGS_TYPE")
 
   if ok:
