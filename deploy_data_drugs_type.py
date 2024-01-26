@@ -234,7 +234,7 @@ elif page =="- PREDICTION -":
     x_RUS, y_RUS= Rus.fit_resample(x, y)
     oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])
     df['Drug'] = oe.fit_transform(df[['Drug']])
-    df= pd.get_dummies(DATA_FRAME('df'), columns=['BP', 'Cholesterol','Sex'])
+    df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
     st.dataframe(df.head(5))
     x = df.loc[:, df.columns != 'Drug']
     y = df['Drug']
