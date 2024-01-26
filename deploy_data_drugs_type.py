@@ -234,7 +234,7 @@ elif page =="- PREDICTION -":
     df['Drug'] = oe.fit_transform(df[['Drug']])
     df= pd.get_dummies(DATA_FRAME('df'), columns=['BP', 'Cholesterol','Sex'])
     st.dataframe(df.head(5))
-    ok=st.button("PREDICTION_DRUGS_TYPE")
+    # ok=st.button("PREDICTION_DRUGS_TYPE")
 
   # if ok:
 
@@ -266,8 +266,9 @@ elif page =="- PREDICTION -":
     grid_result=grid_search_BAGG.fit(x_train,y_train)
 
     DRUG_ = grid_search_BAGG.predict(x_test) # Uses the model to predict the drug type
+    ok=st.button("PREDICTION_DRUGS_TYPE")
     st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
-
+    
     new_data=pd.DataFrame(n,columns=['Age_','Na_to_K_','CHOLESTROL_'])
     new_data['DRUG_'] = DRUG_
 
