@@ -260,9 +260,9 @@ elif page =="- PREDICTION -":
     score=cross_val_score(BAGGING_CLAS_mode,x_train,y_train,cv=kf) # kfold
     params= {'n_estimators' : [10, 100, 1000]}
     grid_search_BAGG=GridSearchCV(
-    estimator=BAGGING_CLAS_mode,
-    param_grid=params,verbose = 1, n_jobs = -1,
-    scoring='accuracy',cv=kf)
+        estimator=BAGGING_CLAS_mode,
+        param_grid=params,verbose = 1, n_jobs = -1,
+        scoring='accuracy',cv=kf)
     grid_result=grid_search_BAGG.fit(x_train,y_train)
 
     DRUG_ = BAGGING_CLAS_mode.predict(x_test) # Uses the model to predict the drug type
