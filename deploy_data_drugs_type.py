@@ -241,6 +241,7 @@ elif page =="- PREDICTION -":
     df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
     st.dataframe(df.head(5))
     ok=st.button("PREDICTION_DRUGS_TYPE")
+  if ok:
     x = df.loc[:, df.columns != 'Drug']
     y = df['Drug']
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.3, random_state=42)
