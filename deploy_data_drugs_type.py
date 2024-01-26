@@ -283,7 +283,9 @@ elif page =="- PREDICTION -":
         scoring='accuracy',cv=kf)
     grid_result=grid_search_BAGG.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
+    new_data=pd.DataFrame(n,columns=['CHOLESTROL_','Sex_','Na_to_K_','Age_','BP_'])
     DRUG_=grid_search_BAGG.predict(n)
+    new_data['DRUG_'] = DRUG_
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
 
@@ -294,9 +296,9 @@ elif page =="- PREDICTION -":
     my_bar.empty()
     # st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     st.subheader('PREDICTION_SAMPLE')
-    if DRUG_==0:
+    if DRUG_[0]==0:
        st.subheader("DrugY")
-    elif DRUG_==1:
+    elif DRUG_[0]==1:
         st.subheader("drugC")
     elif DRUG_[0]==2:
         st.subheader("drugX")
