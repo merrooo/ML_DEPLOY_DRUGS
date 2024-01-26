@@ -295,15 +295,15 @@ elif page =="- PREDICTION -":
     # st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     st.subheader('PREDICTION_SAMPLE')
     if DRUG_[0]==0:
-        DRUG_[0]="DrugY"
+       st.subheader("DrugY")
     elif DRUG_[0]==1:
-        DRUG_[0]="drugC"
+        st.subheader("drugC")
     elif DRUG_[0]==2:
-        DRUG_[0]="drugX"
+        st.subheader("drugX")
     elif DRUG_[0]==3:
-        DRUG_[0]="drugA"
+        st.subheader("drugA")
     else:
-        DRUG_[0]="drugB" 
+        st.subheader("drugB")
     st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]}]") # Displays the predicted drug type in Streamlit
     #--------------------------------------------------------------------------
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
