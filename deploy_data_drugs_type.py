@@ -243,8 +243,8 @@ elif page =="- PREDICTION -":
   Na_to_K_=st.number_input("Na_to_K")
   Age_=st.number_input("Age")
   BP_=st.selectbox("BP",('HIGH','NORMAL','LOW'))
-  CHOLESTROL_=st.selectbox(" HIGH","NORMAL")
-  Sex_=st.selectbox(" FEMALE","MALE")
+  CHOLESTROL_=st.selectbox("CHOLESTROL",('HIGH','NORMAL'))
+  Sex_=st.selectbox("Sex",('FEMALE','MALE'))
   if BP_=="HIGH":
       BP_=1
   elif BP_=="NORMAL":
