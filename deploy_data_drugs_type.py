@@ -281,9 +281,9 @@ elif page =="- PREDICTION -":
         estimator=BAGGING_CLAS_mode,
         param_grid=params,verbose = 1, n_jobs = -1,
         scoring='accuracy',cv=kf)
-    grid_result=grid_search_BAGG.fit(x_train,y_train)
+    grid_result=BAGGING_CLAS_mode.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
-    DRUG_=grid_search_BAGG.predict(n)
+    DRUG_=BAGGING_CLAS_mode.predict(n)
     st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]:.2f}]") # Displays the predicted drug type in Streamlit
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
