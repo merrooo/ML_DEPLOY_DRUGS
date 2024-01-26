@@ -305,10 +305,10 @@ elif page =="- PREDICTION -":
         wb.save('large_df.xlsx')
     wb = openpyxl.load_workbook('large_df.xlsx')
     ws = wb.active
-    for index, row in new_data.iterrows():
+    for index, row in df.iterrows():
         ws.append(row.tolist())
     wb.save('large_df.xlsx')
-    csv = convert_df(new_data)
+    csv = convert_df(df)
     st.download_button(
         label="DOWNLOAD_CSV.FILE",
         data=csv,
