@@ -42,6 +42,7 @@ from imblearn.over_sampling import SMOTE
 
 from sklearn.ensemble import BaggingClassifier
 from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
 
 
 st.header("DRUG_DATA_SET")
@@ -277,20 +278,21 @@ elif page =="- PREDICTION -":
     # x_train=scaler.fit_transform(x_train)
     # x_test=scaler.transform(x_test)
 
-    SVC_mode=SVC()
+    KNN_CLA_mode=KNeighborsClassifier()
     kf=KFold(n_splits=3,shuffle=True,random_state=0)
-    score=cross_val_score(SVC_mode,x_train,y_train,cv=kf) # kfold
-    params= { 'C': [0.1,1, 10, 100],
-              'gamma': [1,0.1,0.01,0.001],
-               'kernel': ['rbf', 'poly', 'sigmoid','linear']}
-    grid_search_SVC=GridSearchCV(
-        estimator=SVC_mode,
-        param_grid=params,verbose = 1, n_jobs = -1,
-        scoring='accuracy',cv=kf)
-    grid_result=grid_search_SVC.fit(x_train,y_train)
+    score=cross_val_score(KNN_CLA_mode,x_train,y_train,cv=kf) # kfold
+    params={
+                'n_neighbors' : [3,5,7,9,11,15,17,19,21],
+               'weights' : ['uniform','distance'],
+               'metric' : ['minkowski','euclidean','manhattan']}
+    grid_search_KNN=GridSearchCV(
+    estimator=KNN_CLA_mode,
+    param_grid=params,verbose = 1, n_jobs = -1,
+    scoring='accuracy',cv=kf)
+    grid_result=grid_search_KNN.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
     # new_data=pd.DataFrame(n,columns=['CHOLESTROL_','Sex_','Na_to_K_','Age_','BP_'])
-    DRUG_=grid_search_SVC.predict(n)
+    DRUG_=grid_search_KNN.predict(n)
     # new_data['DRUG_'] = DRUG_
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
@@ -313,11 +315,11 @@ elif page =="- PREDICTION -":
         st.subheader("drugB")
     # st.subheader(f'THE_ESTIMATED_STRENGTH_IS :- \n{np.round(DRUG_,2)}')
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
-    DRUG_TRAIN=grid_search_BAGG.predict(x_train)
+    DRUG_TRAIN=grid_search_KNN.predict(x_train)
     ACCURACY_TRAIN=accuracy_score(y_train,DRUG_TRAIN)*100
     st.subheader(" ACCURACY_TRAIN_FOR_MODEL_IS :- \n[{:.2f}] %".format(ACCURACY_TRAIN))
     st.write('------------------------------ACCURACY_TEST------------------------------')
-    DRUG_TEST=grid_search_BAGG.predict(x_test)
+    DRUG_TEST=grid_search_KNN.predict(x_test)
     ACCURACY_TEST=accuracy_score(y_test,DRUG_TEST)*100
     st.subheader(" ACCURACY_TEST_FOR_MODEL_IS :- \n[{:.2f}] %".format(ACCURACY_TEST))
     st.write('-----------------------------ACCURACCY_GRAPH----------------------------')
