@@ -278,7 +278,7 @@ elif page =="- PREDICTION -":
     # x_test=scaler.transform(x_test)
 
     BAGGING_CLAS_mode=BaggingClassifier()
-    kf=KFold(n_splits=5,shuffle=True,random_state=0)
+    kf=KFold(n_splits=4,shuffle=True,random_state=0)
     score=cross_val_score(BAGGING_CLAS_mode,x_train,y_train,cv=kf) # kfold
     params= {'n_estimators' : [10, 100, 1000]}
     grid_search_BAGG=GridSearchCV(
