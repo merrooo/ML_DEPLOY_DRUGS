@@ -285,10 +285,10 @@ elif page =="- PREDICTION -":
         estimator=BAGGING_CLAS_mode,
         param_grid=params,verbose = 1, n_jobs = -1,
         scoring='accuracy',cv=kf)
-    grid_result=BAGGING_CLAS_mode.fit(x_train,y_train)
+    grid_result=grid_search_BAGG.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
     # new_data=pd.DataFrame(n,columns=['CHOLESTROL_','Sex_','Na_to_K_','Age_','BP_'])
-    DRUG_=BAGGING_CLAS_mode.predict(n)
+    DRUG_=grid_search_BAGG.predict(n)
     # new_data['DRUG_'] = DRUG_
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
