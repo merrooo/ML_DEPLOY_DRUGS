@@ -266,9 +266,13 @@ elif page =="- PREDICTION -":
     # Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
     # x_RUS, y_RUS= Rus.fit_resample(x, y)
     # x_train, x_test, y_train, y_test = train_test_split(x_RUS, y_RUS, test_size=.3, random_state=42)
-    Ros_smote = SMOTE(sampling_strategy = {0:91, 1:91, 2:91 , 3:91, 4:91}, k_neighbors=5)
-    x_SMOTE, y_SMOTE= Ros_smote.fit_resample(x, y)
-    x_train,x_test,y_train,y_test=train_test_split(x_SMOTE,y_SMOTE,test_size=.3 ,random_state=42) 
+      
+    # Ros_smote = SMOTE(sampling_strategy = {0:91, 1:91, 2:91 , 3:91, 4:91}, k_neighbors=5)
+    # x_SMOTE, y_SMOTE= Ros_smote.fit_resample(x, y)
+    # x_train,x_test,y_train,y_test=train_test_split(x_SMOTE,y_SMOTE,test_size=.3 ,random_state=42) 
+      
+    x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=.3 ,random_state=42)
+      
     # scaler=StandardScaler()
     # x_train=scaler.fit_transform(x_train)
     # x_test=scaler.transform(x_test)
