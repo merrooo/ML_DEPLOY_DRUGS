@@ -291,13 +291,13 @@ elif page =="- PREDICTION -":
     time.sleep(1)
     my_bar.empty()
     st.subheader('PREDICTION_SAMPLE')
-    if DRUG_[0]==0:
+    if DRUG_.index[0]==0:
        st.subheader("DrugY")
-    elif DRUG_[0]==1:
+    elif DRUG_[0].index[0]==1:
         st.subheader("drugC")
-    elif DRUG_[0]==2:
+    elif DRUG_[0].index[0]==2:
         st.subheader("drugX")
-    elif DRUG_[0]==3:
+    elif DRUG_[0].index[0]==3:
         st.subheader("drugA")
     else:
         st.subheader("drugB")
