@@ -230,8 +230,6 @@ elif page =="- PREDICTION -":
   st.write("WE_NEED_SOME_INFORMATION_TO_PREDICT_THE DRUG_TYPE")
   #------------------------------------------------------------------
   st.write('DATA_HEAD!!')
-  # Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
-  # x_RUS, y_RUS= Rus.fit_resample(x, y)
   st.dataframe(df.head(5))
   oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])   
   df['Drug'] = oe.fit_transform (df[['Drug']])
@@ -265,10 +263,14 @@ elif page =="- PREDICTION -":
   if ok:
     x = df.loc[:, df.columns != 'Drug']
     y = df['Drug']
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.3, random_state=42)
-    scaler=StandardScaler()
-    x_train=scaler.fit_transform(x_train)
-    x_test=scaler.transform(x_test)
+    Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
+    x_RUS, y_RUS= Rus.fit_resample(x, y)
+    x_train, x_test, y_train, y_test = train_test_split(x_RUS, y_RUS, test_size=.3, random_state=42)
+      
+    # scaler=StandardScaler()
+    # x_train=scaler.fit_transform(x_train)
+    # x_test=scaler.transform(x_test)
+
     BAGGING_CLAS_mode=BaggingClassifier()
     kf=KFold(n_splits=5,shuffle=True,random_state=0)
     score=cross_val_score(BAGGING_CLAS_mode,x_train,y_train,cv=kf) # kfold
