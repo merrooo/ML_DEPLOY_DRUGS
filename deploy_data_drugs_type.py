@@ -41,7 +41,7 @@ from imblearn.under_sampling import RandomUnderSampler
 from imblearn.over_sampling import SMOTE
 
 from sklearn.ensemble import BaggingClassifier
-
+from sklearn.svm import SVC
 
 
 st.header("DRUG_DATA_SET")
