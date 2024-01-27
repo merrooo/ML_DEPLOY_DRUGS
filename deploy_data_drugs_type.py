@@ -235,15 +235,15 @@ elif page =="- PREDICTION -":
   # Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
   # x_RUS, y_RUS= Rus.fit_resample(x, y)
   st.dataframe(DATA_FRAME('df').head(5))
-  # oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])   
-  # DATA_FRAME('df')['Drug'] = oe.fit_transform(DATA_FRAME('df')[['Drug']])
-  # # df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
-  # oe = OrdinalEncoder(categories=[['NORMAL', 'HIGH']])
-  # DATA_FRAME('df')['Cholesterol'] = oe.fit_transform(DATA_FRAME('df')[['Cholesterol']])
-  # oe = OrdinalEncoder(categories=[['F', 'M']])
-  # DATA_FRAME('df')['Sex'] = oe.fit_transform(DATA_FRAME('df')[['Sex']])
-  # oe = OrdinalEncoder(categories=[['LOW', 'NORMAL','HIGH']])
-  # DATA_FRAME('df')['BP'] = oe.fit_transform(DATA_FRAME('df')[['BP']])
+  oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])   
+  df['Drug'] = oe.fit_transform (df[['Drug']])
+  # df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
+  oe = OrdinalEncoder(categories=[['NORMAL', 'HIGH']])
+  df['Cholesterol'] = oe.fit_transform(df[['Cholesterol']])
+  oe = OrdinalEncoder(categories=[['F', 'M']])
+  df['Sex'] = oe.fit_transform(df[['Sex']])
+  oe = OrdinalEncoder(categories=[['LOW', 'NORMAL','HIGH']])
+  df['BP'] = oe.fit_transform(df[['BP']])
   Age_=st.number_input("Age")
   Sex_=st.selectbox("Sex",('FEMALE','MALE'))
   BP_=st.selectbox("BP",('HIGH','NORMAL','LOW'))
@@ -265,19 +265,6 @@ elif page =="- PREDICTION -":
       Sex_=1
   ok=st.button("PREDICTION_DRUGS_TYPE")
   if ok:
-    def DATA_FRAME(df):
-      url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
-      df=pd.read_csv(url_1)
-      return df
-    oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])   
-    DATA_FRAME('df')['Drug'] = oe.fit_transform(DATA_FRAME('df')[['Drug']])
-    # df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
-    oe = OrdinalEncoder(categories=[['NORMAL', 'HIGH']])
-    DATA_FRAME('df')['Cholesterol'] = oe.fit_transform(DATA_FRAME('df')[['Cholesterol']])
-    oe = OrdinalEncoder(categories=[['F', 'M']])
-    DATA_FRAME('df')['Sex'] = oe.fit_transform(DATA_FRAME('df')[['Sex']])
-    oe = OrdinalEncoder(categories=[['LOW', 'NORMAL','HIGH']])
-    DATA_FRAME('df')['BP'] = oe.fit_transform(DATA_FRAME('df')[['BP']])
     x = DATA_FRAME('df').loc[:, DATA_FRAME('df').columns != 'Drug']
     y = DATA_FRAME('df')['Drug']
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=.3, random_state=42)
