@@ -277,18 +277,20 @@ elif page =="- PREDICTION -":
     # x_train=scaler.fit_transform(x_train)
     # x_test=scaler.transform(x_test)
 
-    BAGGING_CLAS_mode=BaggingClassifier()
-    kf=KFold(n_splits=4,shuffle=True,random_state=0)
-    score=cross_val_score(BAGGING_CLAS_mode,x_train,y_train,cv=kf) # kfold
-    params= {'n_estimators' : [10, 100, 1000]}
-    grid_search_BAGG=GridSearchCV(
-        estimator=BAGGING_CLAS_mode,
+    SVC_mode=SVC()
+    kf=KFold(n_splits=3,shuffle=True,random_state=0)
+    score=cross_val_score(SVC_mode,x_train,y_train,cv=kf) # kfold
+    params= { 'C': [0.1,1, 10, 100],
+              'gamma': [1,0.1,0.01,0.001],
+               'kernel': ['rbf', 'poly', 'sigmoid','linear']}
+    grid_search_SVC=GridSearchCV(
+        estimator=SVC_mode,
         param_grid=params,verbose = 1, n_jobs = -1,
         scoring='accuracy',cv=kf)
-    grid_result=grid_search_BAGG.fit(x_train,y_train)
+    grid_result=grid_search_SVC.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
     # new_data=pd.DataFrame(n,columns=['CHOLESTROL_','Sex_','Na_to_K_','Age_','BP_'])
-    DRUG_=grid_search_BAGG.predict(n)
+    DRUG_=grid_search_SVC.predict(n)
     # new_data['DRUG_'] = DRUG_
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
