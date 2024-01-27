@@ -293,17 +293,17 @@ elif page =="- PREDICTION -":
     time.sleep(1)
     my_bar.empty()
     st.subheader('PREDICTION_SAMPLE')
-    # if (DRUG_.index[0])==0:
-    #    st.subheader("DrugY")
-    # elif (DRUG_.index[0])==1:
-    #     st.subheader("drugC")
-    # elif (DRUG_.index[0])==2:
-    #     st.subheader("drugX")
-    # elif (DRUG_.index[0])==3:
-    #     st.subheader("drugA")
-    # else:
-    #     st.subheader("drugB")
-    st.subheader(f'THE_ESTIMATED_STRENGTH_IS :- \n{np.round(DRUG_,2)}')
+    if DRUG_[0]==0:
+       st.subheader("DrugY")
+    elif DRUG_[0]==1:
+        st.subheader("drugC")
+    elif DRUG_[0]==2:
+        st.subheader("drugX")
+    elif DRUG_[0]==3:
+        st.subheader("drugA")
+    else:
+        st.subheader("drugB")
+    # st.subheader(f'THE_ESTIMATED_STRENGTH_IS :- \n{np.round(DRUG_,2)}')
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
     DRUG_TRAIN=grid_search_BAGG.predict(x_train)
     ACCURACY_TRAIN=accuracy_score(y_train,DRUG_TRAIN)*100
