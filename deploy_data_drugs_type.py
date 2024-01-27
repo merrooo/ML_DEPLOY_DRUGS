@@ -46,10 +46,6 @@ from sklearn.ensemble import BaggingClassifier
 
 st.header("DRUG_DATA_SET")
 st.image("https://media.istockphoto.com/id/692096736/photo/concrete-pouring-during-commercial-concreting-floors-of-building.jpg?s=1024x1024&w=is&k=20&c=XYYH7UhgqsMmwGBWO6UJsxaSgjxNDuQO8i7N27nwRlk=", width=200)
-def DATA_FRAME(df):
-  url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
-  df=pd.read_csv(url_1)
-  return df
 page=st.sidebar.selectbox("PROSSECCES_ON_DATA_SET",("- -","- EDA -","- VISUALIZATION -","- PREDICTION -"))
 if page == "- EDA -":
     EDA_=st.sidebar.selectbox("EXPLORING_DATA_COLUMNS",("- -","- DATA_FARME -","- COLUMNS -"))
@@ -229,12 +225,14 @@ elif page =="- VISUALIZATION -":
 #_______________________________________________________________________________________________________________________________________________________________
 
 elif page =="- PREDICTION -":
+  url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
+  df=pd.read_csv(url_1)
   st.write("WE_NEED_SOME_INFORMATION_TO_PREDICT_THE DRUG_TYPE")
   #------------------------------------------------------------------
   st.write('DATA_HEAD!!')
   # Rus = RandomUnderSampler(sampling_strategy = {0:16, 1:16, 2:16 , 3:16, 4:16},random_state=42)
   # x_RUS, y_RUS= Rus.fit_resample(x, y)
-  st.dataframe(DATA_FRAME('df').head(5))
+  st.dataframe(df.head(5))
   oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])   
   df['Drug'] = oe.fit_transform (df[['Drug']])
   # df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
