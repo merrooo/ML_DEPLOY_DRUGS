@@ -301,6 +301,7 @@ elif page =="- PREDICTION -":
         st.subheader("drugA")
     else:
         st.subheader("drugB")
+    st.subheader(f'THE_ESTIMATED_STRENGTH_IS :- \n'.format(round(DRUG_,2)))
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
     DRUG_TRAIN=grid_search_BAGG.predict(x_train)
     ACCURACY_TRAIN=accuracy_score(y_train,DRUG_TRAIN)*100
