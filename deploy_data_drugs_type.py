@@ -265,6 +265,10 @@ elif page =="- PREDICTION -":
       Sex_=1
   ok=st.button("PREDICTION_DRUGS_TYPE")
   if ok:
+    def DATA_FRAME(df):
+      url_1= 'https://raw.githubusercontent.com/merrooo/ML_DEPLOY_DRUGS/main/DRUGS.csv?token=GHSAT0AAAAAACNFDRMB6H7UC5FLSIO6RE7YZNNUL2A'
+      df=pd.read_csv(url_1)
+      return df
     oe = OrdinalEncoder(categories=[['DrugY', 'drugC', 'drugX', 'drugA', 'drugB']])   
     DATA_FRAME('df')['Drug'] = oe.fit_transform(DATA_FRAME('df')[['Drug']])
     # df= pd.get_dummies(df, columns=['BP', 'Cholesterol','Sex'])
