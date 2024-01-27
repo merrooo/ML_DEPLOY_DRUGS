@@ -301,8 +301,6 @@ elif page =="- PREDICTION -":
         st.subheader("drugA")
     else:
         st.subheader("drugB")
-    st.subheader(f" THE_ESTIMATED_DRUG_TYPE_IS :- \n[{DRUG_[0]}]") # Displays the predicted drug type in Streamlit
-    #--------------------------------------------------------------------------
     st.write('------------------------------ACCURACY_TRAIN-----------------------------')
     DRUG_TRAIN=grid_search_BAGG.predict(x_train)
     ACCURACY_TRAIN=accuracy_score(y_train,DRUG_TRAIN)*100
