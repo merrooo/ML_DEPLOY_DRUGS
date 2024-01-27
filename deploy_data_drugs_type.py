@@ -278,23 +278,21 @@ elif page =="- PREDICTION -":
     # x_train=scaler.fit_transform(x_train)
     # x_test=scaler.transform(x_test)
 
-    DT_Class_mode=DecisionTreeClassifier()
+    XGB_CLAS_mode=XGBClassifier()
     kf=KFold(n_splits=3,shuffle=True,random_state=0)
-    score=cross_val_score(DT_Class_mode,x_train,y_train,cv=kf) # kfold
+    score=cross_val_score(XGB_CLAS_mode,x_train,y_train,cv=kf) # kfold
     params={
-        'criterion':['entropy','gini'],
-        "max_depth":[3,4,5,6],
-        "max_features":['auto'],"max_leaf_nodes":[50],"min_samples_leaf":[2],"min_weight_fraction_leaf":[0.1],
-        "splitter":['random']}
-    grid_search_DT=GridSearchCV(
-    estimator=DT_Class_mode,
+        'max_depth': range (2, 10, 1),
+        'n_estimators': range(60, 220, 40),
+        'learning_rate': [0.1, 0.01, 0.05]}
+    grid_search_XGB=GridSearchCV(
+    estimator=XGB_CLAS_mode,
     param_grid=params,verbose = 1, n_jobs = -1,
     scoring='accuracy',cv=kf)
-
-    grid_result=grid_search_DT.fit(x_train,y_train)
+    grid_result_XGB=grid_search_XGB.fit(x_train,y_train)
     n =np.array([[CHOLESTROL_,Sex_,Na_to_K_,Age_,BP_]])
     # new_data=pd.DataFrame(n,columns=['CHOLESTROL_','Sex_','Na_to_K_','Age_','BP_'])
-    DRUG_=grid_search_DT.predict(n)
+    DRUG_=grid_search_XGB.predict(n)
     # new_data['DRUG_'] = DRUG_
     progress_text = "Operation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
