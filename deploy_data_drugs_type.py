@@ -43,6 +43,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.ensemble import BaggingClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
+from xgboost import XGBClassifier
 
 
 st.header("DRUG_DATA_SET")
